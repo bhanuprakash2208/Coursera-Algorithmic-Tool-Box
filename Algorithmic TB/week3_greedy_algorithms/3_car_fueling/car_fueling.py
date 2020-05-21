@@ -8,13 +8,14 @@ def compute_min_refills(distance, tank, stops):
     cur_refill=0
     last_refill=0
     stops.append(distance)
+    stops.insert(0,0)
     while cur_refill<len(stops)-1:
         last_refill=cur_refill
-        while cur_refill<len(stops)-2 and stops[cur_refill+1]-stops[last_refill]<=tank:
+        while cur_refill<len(stops)-1 and stops[cur_refill+1]-stops[last_refill]<=tank:
             cur_refill+=1
         if cur_refill==last_refill:
             return -1
-        if cur_refill<len(stops)-2:
+        if cur_refill<len(stops)-1:
             num_refills+=1
         
     return num_refills
